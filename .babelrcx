@@ -1,0 +1,16 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {"browsers": "chrome 52"},
+      "exclude": [
+        "transform-async-to-generator"
+      ]
+    }]
+  ],
+  "plugins": [
+    "babel-plugin-transform-object-rest-spread",
+    "babel-plugin-transform-async-generator-functions",
+    "babel-plugin-transform-jsx",
+    "transform-es2015-modules-commonjs"
+  ]
+}
