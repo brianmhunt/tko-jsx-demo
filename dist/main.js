@@ -11,6 +11,7 @@ class DemoComponent extends ko.Component {
       attributes: {},
       children: [o()]
     }));
+    const counter = ko.observable(0);
 
     return {
       elementName: 'div',
@@ -31,7 +32,13 @@ class DemoComponent extends ko.Component {
         elementName: 'div',
         attributes: {},
         children: ['A promise: ', Promise.resolve('resolved!')]
-      }]
+      }, {
+        elementName: 'button',
+        attributes: {
+          'ko-click': () => counter.modify(v => v + 1)
+        },
+        children: ['Click ']
+      }, ' Count: ', ko.computed(() => '' + counter())]
     };
   }
 }

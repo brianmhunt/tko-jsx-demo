@@ -5,6 +5,7 @@ class DemoComponent extends ko.Component {
     const o = ko.observable('initial value')
     setInterval(() => o(new Date().toString()), 500)
     const c = ko.computed(() => (<b>{o()}</b>))
+    const counter = ko.observable(0)
 
     return (
       <div>
@@ -12,6 +13,7 @@ class DemoComponent extends ko.Component {
         <div>A computed: {c} </div>
         <div>An array: {[o(), c()]}</div>
         <div>A promise: {Promise.resolve('resolved!')}</div>
+        <button ko-click={() => counter.modify(v => v + 1)}>Click </button> Count: {ko.computed(() => '' + counter())}
       </div>
     )
   }
