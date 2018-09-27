@@ -1,19 +1,17 @@
-const ko = global.ko
+const ko = window.ko
 
-class DemoComponent extends ko.component {
+class DemoComponent extends ko.Component {
   get template () {
-    const o = ko.observable()
-    setInterval(() => o(new Date().format()), 500)
-    const c = ko.computed(() => (
-      <b>o()</b>
-    ))
+    const o = ko.observable('initial value')
+    setInterval(() => o(new Date().toString()), 500)
+    const c = ko.computed(() => (<b>{o()}</b>))
 
     return (
       <div>
-        An observable: {o()}
-        A computed: {c()}
-        An array: {[o(), c()]}
-        A promise: {Promise.resolve('resolved!')}
+        <div>An observable: {o} </div>
+        <div>A computed: {c} </div>
+        <div>An array: {[o(), c()]}</div>
+        <div>A promise: {Promise.resolve('resolved!')}</div>
       </div>
     )
   }

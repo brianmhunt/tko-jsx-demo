@@ -1,1 +1,41 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";(function(e){const t=e.ko;(class extends t.component{get template(){const e=t.observable();setInterval(()=>e((new Date).format()),500);const n=t.computed(()=>({elementName:"b",attributes:{},children:["o()"]}));return{elementName:"div",attributes:{},children:["An observable: ",e(),"A computed: ",n(),"An array: ",[e(),n()],"A promise: ",Promise.resolve("resolved!")]}}}).register(),t.applyBindings()}).call(this,n(1))},function(e,t,n){"use strict";var r;r=function(){return this}();try{r=r||Function("return this")()||(0,eval)("this")}catch(e){"object"==typeof window&&(r=window)}e.exports=r}]);
+'use strict';
+
+const ko = window.ko;
+
+class DemoComponent extends ko.Component {
+  get template() {
+    const o = ko.observable('initial value');
+    setInterval(() => o(new Date().toString()), 500);
+    const c = ko.computed(() => ({
+      elementName: 'b',
+      attributes: {},
+      children: [o()]
+    }));
+
+    return {
+      elementName: 'div',
+      attributes: {},
+      children: [{
+        elementName: 'div',
+        attributes: {},
+        children: ['An observable: ', o, ' ']
+      }, {
+        elementName: 'div',
+        attributes: {},
+        children: ['A computed: ', c, ' ']
+      }, {
+        elementName: 'div',
+        attributes: {},
+        children: ['An array: ', [o(), c()]]
+      }, {
+        elementName: 'div',
+        attributes: {},
+        children: ['A promise: ', Promise.resolve('resolved!')]
+      }]
+    };
+  }
+}
+
+DemoComponent.register();
+
+ko.applyBindings();

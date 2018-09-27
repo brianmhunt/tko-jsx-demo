@@ -5,22 +5,13 @@ Run with
 
 ```
 >>> yarn install
->>> yarn start
+>>> yarn make
 ```
 
-Point browser to `localhost:8090`
+Point browser to `index.html` in the `dist/` directory.
 
-Build the `dist/main.js` with:
+Rebuild the `dist/main.js` and other dependencies with:
 
 ```
 >>> yarn make
 ```
-
-
-----
-
-As of this writing webpack + babel is doing some bizarre stuff:
-
-1. `import` breaks with an invalid token
-2. jsx isn't being compiled
-3. class names are being clobbered / minified
